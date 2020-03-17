@@ -1,9 +1,9 @@
-<div style="text-align:center">
+<div style="text-align:center" [ngStyle.xs]="{'text-align':'left'}">
   <div class="row">
     <ul>
       <li *ngFor="let img of (allImages | filterimages:filterBy)">
         <a>
-          <img src="{{img.url}}" class="img" width="800" height="800">
+          <img src="{{img.url}}" class="img" [ngStyle.xs]="{'height': '300px', 'width':'300px'}">
         </a>
       </li>
     </ul>

@@ -1,14 +1,32 @@
-<div class="logo"> 
+<div class="logo"  [ngStyle.xs]="{'text-align':'left'}">
     <img src="./assets/images/logo.jpeg" height="100" width="300" />
 </div>
-
-<mat-toolbar >
-    <mat-toolbar-row>
-        <nav mat-tab-nav-bar>
-            <!-- <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive"
+<!-- <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive"
                 [active]="rla.isActive">
                 {{link.label}}
             </a> -->
+<mat-toolbar fxLayout="row" fxLayout.xs="column">
+    <mat-toolbar-row *ngFor="let link of navLinks">
+        <a (click)="onClick($event, link)">
+            {{link.label}}
+        </a>
+    </mat-toolbar-row>
+    <mat-toolbar-row style="width:50%">
+        <span fxFlex.gt-xs="90"> </span>
+        <mat-icon aria-label="help" class="contact-icon" [matMenuTriggerFor]="menu">person</mat-icon>
+        <mat-menu #menu="matMenu">
+            <label class="contact-info">Name: Pratyusha Suram</label>
+            <br />
+            <label class="contact-info">Phone: +1 (618) 303-8281</label>
+        </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+<!-- <mat-toolbar style="max-width: 100%">
+
+    <mat-toolbar-row>
+        <nav mat-tab-nav-bar>
             <a mat-tab-link *ngFor="let link of navLinks" (click)="onClick($event, link)">
                 {{link.label}}
             </a>
@@ -21,4 +39,4 @@
             <label class="contact-info">Phone: +1 (618) 303-8281</label>
         </mat-menu>
     </mat-toolbar-row>
-</mat-toolbar>
+</mat-toolbar> -->
