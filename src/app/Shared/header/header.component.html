@@ -1,5 +1,6 @@
 <div class="logo" [ngStyle.xs]="{'text-align':'left'}">
-    <a href="/"> <img src="./assets/images/logo.jpeg" height="100" width="300" />
+    <a href="/"> 
+        <img src="./assets/images/logo.jpeg" height="80" width="300" />
     </a>
 </div>
 
@@ -9,11 +10,11 @@
             </a> -->
 <mat-toolbar fxLayout="row" fxLayout.xs="column">
     <mat-toolbar-row *ngFor="let link of navLinks">
-        <a (click)="onClick($event, link)">
+        <a style="font-size:15px;" (click)="onClick($event, link)">
             {{link.label}}
         </a>
     </mat-toolbar-row>
-    <mat-toolbar-row style="width:50%">
+    <mat-toolbar-row style="width:60%">
         <span fxFlex.gt-xs="90"> </span>
         <mat-icon aria-label="help" class="contact-icon" [matMenuTriggerFor]="menu">person</mat-icon>
         <mat-menu #menu="matMenu">
