@@ -10,14 +10,14 @@ export class HomeComponent {
 
   imageUrls: (string | IImage)[] = [
     { url: 'assets/images/babys.jpg', href: '#config' },
-    { url: 'assets/images/family.jpg', href: '#config' },
+    { url: 'assets/images/family.jpeg', href: '#config' },
     { url: 'assets/images/occasions.jpg', href: '#config' },
     { url: 'assets/images/pregnency.jpg', href: '#config' },
 ];
 
-height: string = '650px';
+height = '650px';
 minHeight: string;
-arrowSize: string = '30px';
+arrowSize = '30px';
 showArrows: boolean = true;
 disableSwiping: boolean = false;
 autoPlay: boolean = true;
