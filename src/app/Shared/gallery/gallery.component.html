@@ -1,0 +1,11 @@
+<div style="text-align:center">
+  <div class="row">
+    <ul>
+      <li *ngFor="let img of (allImages | filterimages:filterBy)">
+        <a>
+          <img src="{{img.url}}" class="img" width="800" height="800">
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
