@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class PagesService {
     allImages = [];
+    public pageCounts: any = {};
     constructor(private http: HttpClient) {
     }
     getPregnencyImages() {
@@ -16,17 +18,29 @@ export class PagesService {
 
     getImages(imagesType) {
         const imgs = [];
-
-        for (let i = 1; i < 10; i++) {
-            const img: any = {};
-            img.url = `assets/images${imagesType}/${i}.jpg`;
-            img.type = `${imagesType}`;
-            img.id = i;
-            imgs.push(img);
-        }
+        const type = imagesType.replace('/', '');
+        this.getCount().subscribe(data => {
+            this.pageCounts = data.pageCounts;
+            const count = this.pageCounts[type];
+            for (let i = 1; i <= count; i++) {
+                const img: any = {};
+                img.url = `assets/images${imagesType}/${i}.jpg`;
+                img.type = `${imagesType}`;
+                img.id = i;
+                imgs.push(img);
+            }
+           });
         return imgs;
     }
+
+    getCount(): Observable< any> {
+        return this.http.get('assets/configuration.json');
+    }
 }
+
+
+
+
 const Imagesdelatils = [
     { id: 1, type: 'Pregnency', url: 'assets/images/pregnency/1.jpg' },
     { id: 2, type: 'Pregnency', url: 'assets/images/pregnency/2.jpg' },
